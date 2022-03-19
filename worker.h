@@ -18,17 +18,21 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <ucontext.h>
 
 typedef uint worker_t;
 
 typedef struct TCB {
 	/* add important states in a thread control block */
-	// thread Id
-	// thread status
-	// thread context
-	// thread stack
-	// thread priority
-	// And more ...
+	int threadID;
+	int threadStatus;
+	int threadContext;
+	byte[] threadStack;
+	int threadPriority;
+	ucontext_t *uc_link; // Pointer to context when returned
+	sigset_t uc_sigmask; // Set of signals that are block when context is active
+	stack_t uc_stack; // Stack used by context
+	mcontext_t uc_mcontext; // For machine readout (testing purposes)
 
 	// YOUR CODE HERE
 } tcb; 
