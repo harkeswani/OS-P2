@@ -26,8 +26,6 @@ typedef struct TCB {
 	/* add important states in a thread control block */
 	int threadID;
 	int threadStatus;
-	int threadContext;
-	byte[] threadStack;
 	int threadPriority;
 	ucontext_t *uc_link; // Pointer to context when returned
 	sigset_t uc_sigmask; // Set of signals that are block when context is active
